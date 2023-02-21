@@ -13,6 +13,11 @@ const userRouter = require('./routes/user');
 dotenv.config();
 const app = express();
 app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
+
+app.use(morgan('dev'));
 
 app.use(morgan('dev')); //morgan 미들웨어
 app.use('/', express.static(path.join(__dirname, 'public'))); // '/'=요청경로 , static(실제경로) 
